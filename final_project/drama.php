@@ -60,8 +60,9 @@
                     <p class="card-text"><?= $row['description'] ?></p>
                 </div>
                 <div class="action">
-                    <a href="edit.php" class="card-link">edit</a>
-                    <a href="delete.php" class="card-link">delete</a>
+                    <a href="update.php?id=<?= $row['movieId']?>" class="card-link">edit</a>
+                    <a href="update.php?id=<?= $row['movieId']?>" class="card-link">delete</a>
+                    <a href="review.php?id=<?= $row['movieId']?>" class="card-link">reviews</a>
                 </div>
             </div>
         <?php endwhile ?> 

@@ -49,16 +49,16 @@
 
 <div class="homepage_main">
     <div class="header">
-		<img class="logo" src="image/logo.png" alt="" />
-		<h1 class="head">What to watch</a></h1>
-	</div>
-    <div class="category">
-        <h2><a href="drama.php">Drama</a></h2>
-        <h2><a href="action.php">Action</a></h2>
-        <h2><a href="romance.php">Romance</a></h2>
-        <h2><a href="comedy.php">Comedy</a></h2>
-        <h2><a href="crime.php">Crime</a></h2>
-    </div>
+      <img class="logo" src="image/logo.png" alt="" />
+      <h1 class="head">What to watch</a></h1>
+	  </div>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="drama.php">Drama</a></li>
+      <li class="list-group-item"><a href="action.php">Action</a></li>
+      <li class="list-group-item"><a href="romance.php">Romance</li>
+      <li class="list-group-item"><a href="comedy.php">Comedy</li>
+      <li class="list-group-item"><a href="crime.php">Crime</a></li>
+    </ul>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
