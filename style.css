@@ -1,0 +1,75 @@
+/* header part*/
+.main{
+    margin: 0 auto;
+}
+
+.header{
+	display: flex;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+.logo{
+	width: 70px;
+	height: 70px;
+}
+
+.head{
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+/* home page main part*/
+.category{
+    display: flex;
+}
+
+/*post form*/
+.form_part{
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+
+.form-select{
+   margin-top: 40px;
+}
+
+.button{
+    padding-top: 50px;
+}
+
+.form-label{
+    font-weight: bolder;
+}
+
+/* category page */
+.card{
+    margin:50px 20px;
+    display: inline-block;
+    width: 18rem;
+    height: 19rem;
+    vertical-align: top; 
+    position: relative;
+}
+
+.action{
+    position: absolute;
+    left:15px;
+    bottom: 1%;
+}
+
+/* Review part */
+.review-head{
+    display: flex;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.review-count{  
+    padding-left: 25px;
+}
+
+.subtitle{
+    font-weight: bolder;
+}
