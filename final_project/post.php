@@ -6,33 +6,102 @@
     Description: The php file is used to create a new post page for user to uplaod new movie.
 	
 -------------------->
-<?php
-	require('connect.php');
+<?php 
+  require('authenticate.php');
+	include('search.php');
 
-	if(!empty($_POST['movieName']) && !empty($_POST['description']) && !empty($_POST['categoryId']) && !empty($_POST['year'])){	
+  //Upload image
+  function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
+    $current_folder = dirname(__FILE__);
     
-        if(empty($_POST['movieName']) || empty($_OST['description']) || empty($_POST['categoryId']) || empty($_POST['year'])){
-            echo "<h1>"."Please input contents."."</h1>";
-        }	  	
-		//  Sanitize user input to escape HTML entities and filter out dangerous characters.
-        $movieName = filter_input(INPUT_POST, 'movieName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $categoryId = filter_input(INPUT_POST, 'categoryId', FILTER_SANITIZE_NUMBER_INT);
-        $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
-        
-        //Build the parameterized SQL query and bind with values
-        $query = "INSERT INTO Movie (movieName,description, categoryId,year) VALUES (:movieName,:description,:categoryId,:year)";
-        $statement = $db -> prepare($query);
-        
-        //Bind values
-        $statement->bindValue(':movieName', $movieName);
-        $statement->bindValue(':description', $description);
-        $statement->bindValue(':categoryId', $categoryId);
-        $statement->bindValue(':year', $year);
+    // Build an array of paths segment names to be joins using OS specific slashes.
+    $path_segments = [$current_folder, $upload_subfolder_name, basename($original_filename)];
+    
+    // The DIRECTORY_SEPARATOR constant is OS specific.
+    return join(DIRECTORY_SEPARATOR, $path_segments);
+ }
+
+ // file_is_an_image() - Checks the mime-type & extension of the uploaded file for "image-ness".
+ function file_is_an_image($temporary_path, $new_path) {
+     $allowed_mime_types      = ['image/gif', 'image/jpeg', 'image/png'];
+     $allowed_file_extensions = ['gif', 'jpg', 'jpeg', 'png'];
+     
+     $actual_file_extension   = pathinfo($new_path, PATHINFO_EXTENSION);
+     $actual_mime_type        = getimagesize($temporary_path)['mime'];
+     
+     $file_extension_is_valid = in_array($actual_file_extension, $allowed_file_extensions);
+     $mime_type_is_valid      = in_array($actual_mime_type, $allowed_mime_types);
+     
+     return $file_extension_is_valid && $mime_type_is_valid;
+ }
+ 
+ $image_upload_detected = isset($_FILES['image']) && ($_FILES['image']['error'] === 0);
+ $upload_error_detected = isset($_FILES['image']) && ($_FILES['image']['error'] > 0);
+
+ if ($image_upload_detected) { 
+     $image_filename        = $_FILES['image']['name'];
+     $temporary_image_path  = $_FILES['image']['tmp_name'];
+     $new_image_path        = file_upload_path($image_filename);
+     if (file_is_an_image($temporary_image_path, $new_image_path)) {
+         move_uploaded_file($temporary_image_path, $new_image_path);
+     }
+ }
+ echo $_FILES['image']['name'];
+  //Chech if there is an image uploading
+  if(!empty($_FILES['image']['name'])){
+    if(!empty($_POST['movieName']) && !empty($_POST['description']) && !empty($_POST['categoryId']) && !empty($_POST['year'])){	
       
-        //Execute the insert       
-        $statement -> execute();           
-    }
+          if(empty($_POST['movieName']) || empty($_OST['description']) || empty($_POST['categoryId']) || empty($_POST['year'])){
+              echo "<h1>"."Please input contents."."</h1>";
+          }	  	
+      //  Sanitize user input to escape HTML entities and filter out dangerous characters.
+          $movieName = filter_input(INPUT_POST, 'movieName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $categoryId = filter_input(INPUT_POST, 'categoryId', FILTER_SANITIZE_NUMBER_INT);
+          $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
+          $image = $_FILES['image']['name'];
+
+          //Build the parameterized SQL query and bind with values
+          $query = "INSERT INTO Movie (movieName,description, categoryId,year,image) VALUES (:movieName,:description,:categoryId,:year,:image)";
+          $statement = $db -> prepare($query);
+          
+          //Bind values
+          $statement->bindValue(':movieName', $movieName);
+          $statement->bindValue(':description', $description);
+          $statement->bindValue(':categoryId', $categoryId);
+          $statement->bindValue(':year', $year);
+          $statement->bindValue(':image', $image);
+        
+          //Execute the insert       
+          $statement -> execute();           
+      }
+    
+  }elseif(empty($_FILES['image']['name'])){
+
+        if(empty($_POST['movieName']) || empty($_OST['description']) || empty($_POST['categoryId']) || empty($_POST['year'])){
+          echo "<h1>"."Please input contents."."</h1>";
+      }	  	
+    //  Sanitize user input to escape HTML entities and filter out dangerous characters.
+      $movieName = filter_input(INPUT_POST, 'movieName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $categoryId = filter_input(INPUT_POST, 'categoryId', FILTER_SANITIZE_NUMBER_INT);
+      $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
+      
+
+      //Build the parameterized SQL query and bind with values
+      $query = "INSERT INTO Movie (movieName,description, categoryId,year) VALUES (:movieName,:description,:categoryId,:year)";
+      $statement = $db -> prepare($query);
+      
+      //Bind values
+      $statement->bindValue(':movieName', $movieName);
+      $statement->bindValue(':description', $description);
+      $statement->bindValue(':categoryId', $categoryId);
+      $statement->bindValue(':year', $year);
+      
+
+      //Execute the insert       
+      $statement -> execute();   
+  }
 ?>
 
 <!DOCTYPE html>
@@ -46,34 +115,6 @@
     <title>Post Movie</title>
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg bg-light" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">DouBan</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="movie.php">Movie</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="post.php">
-            Post
-          </a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
 
 <div class="main">
 	<div class="header">
@@ -82,7 +123,7 @@
 	</div>
 
     <div class="form_part">
-      <form method="post" action="post.php">
+      <form method="post" action="post.php" enctype='multipart/form-data'>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Movie Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="movieName">
@@ -107,10 +148,19 @@
               <option value="5">Action</option>
             </select>
 
+            <div>
+            <label for='image'>Image Filename(optional):</label>
+            <input type='file' name='image' id='image'>
+            </div>
+
             <div class="button">
                 <input type="submit" id="submitbutton">
             </div>
       </form>
+        <!-- <form method='post' enctype='multipart/form-data' class="image-upload">
+            
+            <input type='submit' name='submit' value='Upload Image'>
+      </form> -->
     </div>
 </div>
     
