@@ -1,11 +1,23 @@
+/* Nav */
+.nav-form-select{
+    margin-right: 5px;
+    border: 1px solid #ced4da;
+    border-radius: .375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(118, 118, 118);
+}
 /* header part*/
+body{
+    margin-bottom: 50px;
+}
 .main{
     margin: 0 auto;
 }
 
 .header{
 	display: flex;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-left: 20px;
 }
 
@@ -26,7 +38,7 @@
 
 /*post form*/
 .form_part{
-    padding-top: 50px;
+    padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
 } 
@@ -36,14 +48,18 @@
 }
 
 .button{
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
 .form-label{
     font-weight: bolder;
 }
 
-/* category page */
+.image-post{
+    margin-top: 20px;
+}
+
+/* Movie page */
 .card{
     margin:50px 20px;
     display: inline-block;
@@ -57,6 +73,12 @@
     position: absolute;
     left:15px;
     bottom: 1%;
+}
+
+.sort-part{
+    padding-left: 20px;
+    padding-top: 20px;
+    width: 200px;
 }
 
 /* Review part */
@@ -73,3 +95,10 @@
 .subtitle{
     font-weight: bolder;
 }
+
+.movieImage{
+    width: 150px;
+	height: 190px;
+}
+
+/* Movie page */
