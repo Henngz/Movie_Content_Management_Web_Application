@@ -1,5 +1,5 @@
 <?php
-require('connect.php');
+require('search.php');
 
 
 if (!empty($_GET['id'])) {
@@ -74,44 +74,15 @@ if (!empty($_GET['id'])) {
     <title>Movie Details</title>
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg bg-light" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">DouBan</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="movie.php">Movie</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="post.php">
-            Post
-          </a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-<div class="main">
-	<div class="header">
+<div class="header">
 		<img class="logo" src="image/logo.png" alt="" />
-		<h1 class="head">Movie Details</a></h1>
+		<h1 class="head">There Are Movie Details And Reviews</a></h1>
 	</div>
-
     <div class="form_part">
     <?php if ($movieId): ?>
-		
+        <?php if ($movie_row['image']): ?>
+            <img class="movieImage" src="uploads/<?= $movie_row['image'] ?>" alt="" />
+        <?php endif; ?>    
 			<input type="hidden" name="movieId" value="<?= $movie_row['movieId'] ?>">
 			<div class="mb-3">
                 <label for="exampleFormControlInput1" class="subtitle">Movie Name:</label>
