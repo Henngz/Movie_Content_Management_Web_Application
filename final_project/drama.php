@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Drama Movies</title>
 </head>
 <body>
@@ -32,9 +32,11 @@
                     <p class="card-text"><?= $row['description'] ?></p>
                 </div>
                 <div class="action">
+                <?php if (checkAdmin($db)): ?>
                     <a href="update.php?id=<?= $row['movieId']?>" class="card-link">edit</a>
                     <a href="update.php?id=<?= $row['movieId']?>" class="card-link">delete</a>
-                    <a href="review.php?id=<?= $row['movieId']?>" class="card-link">reviews</a>
+                  <?php endif; ?>
+                    <a href="review.php?id=<?= $row['movieId']?>" class="card-link">review</a>
                 </div>
             </div>
         <?php endwhile ?> 
