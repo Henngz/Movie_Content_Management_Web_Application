@@ -1,6 +1,22 @@
 <?php
 require('search.php');
+if (!empty($_GET['id'])) {
+    if(!filter_var($_GET['id'],FILTER_VALIDATE_INT)){
+        header("Location:home.php?");
+        exit;
+    }
 
+    $movieId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+    // Fetch review
+    $query = "SELECT * FROM Review WHERE movieId = :movieId";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':movieId', $movieId, PDO::PARAM_INT);
+
+    // Execute the SELECT and fetch the single row returned.
+    $row = $statement->fetch();
+    $statement->execute();
+    
+}
 
 if (!empty($_GET['id'])) {
     if(!filter_var($_GET['id'],FILTER_VALIDATE_INT)){
@@ -20,48 +36,8 @@ if (!empty($_GET['id'])) {
     // Execute the SELECT and fetch the single row returned.
     $movie_statement->execute();
     $movie_row = $movie_statement->fetch();
-
-    echo !empty($_POST['userName'])? "true":"false"; 
-    echo !empty($_POST['content'])? "true":"false"; 
-    echo !empty($_POST['movieId'])? "true":"false"; 
-    //Post review
-    if(!empty($_POST['userName']) && !empty($_POST['content'])){	
-    
-        // if(empty($_POST['userName']) || empty($_POST['userName'])){
-        //     echo "<h1>"."Please input contents."."</h1>";
-        // }	  	
-		//  Sanitize user input to escape HTML entities and filter out dangerous characters.
-        $userId = filter_input(INPUT_POST, 'userId', FILTER_SANITIZE_NUMBER_INT);
-        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        
-       
-        //Build the parameterized SQL query and bind with values
-        $query = "INSERT INTO Review (userName,content, movieId) VALUES (:userName,:content, :movieId)";
-        $statement = $db -> prepare($query);
-        
-        //Bind values
-        $statement->bindValue(':userName', $userName);
-        $statement->bindValue(':content', $content);
-        $statement->bindValue(':movieId', $movieId, PDO::PARAM_INT);
-
-        //Execute the insert       
-        echo $statement -> execute()? "atrue":"afalse"; 
-        echo $movieId;
-        header("Location:review.php?id={$movieId}");
-        
-    }
-
-    // Fetch review
-    $review_query = "SELECT * FROM Review WHERE movieId = :movieId";
-    $review_statement = $db->prepare($review_query);
-    $review_statement->bindValue(':movieId', $movieId, PDO::PARAM_INT);
-    
-    // Execute the SELECT and fetch the single row returned.
-    
-    echo $review_statement->execute()? "true":"false";
-    $review_row = $review_statement->fetch();
-    
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +46,7 @@ if (!empty($_GET['id'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Movie Details</title>
 </head>
 <body>
@@ -117,7 +93,8 @@ if (!empty($_GET['id'])) {
     </div>
 
     <div class="form_part">
-      <form method="post" action="review.php">
+      <form method="post" action="addReview.php?id=<?= $movie_row['movieId'] ?>">
+            <input type="hidden" name="movieId" value="<?= $movie_row['movieId'] ?>">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">User Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="userName">
@@ -134,12 +111,12 @@ if (!empty($_GET['id'])) {
     </div>
 
     <div class="review-part">      
-        <?php if ($movieId): ?>		
-            
-        <?php while ($review_row = $review_statement -> fetch()): ?>
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-subtitle mb-2 text-muted"><?= $review_row['content'] ?></p>             
+        <?php if ($movieId): ?>		       
+        <?php while ($row = $statement -> fetch()): ?>
+            <div class="review-card">
+                <div class="review-card-body" >
+                    <h5 class="card-title"><?= $row['userName'] ?></h5>
+                    <p class="card-subtitle mb-2 text-muted" style="padding-top:15px;"><?= $row['content'] ?></p>             
                 </div>              
             </div>
         <?php endwhile ?>
