@@ -1,0 +1,199 @@
+/* AJAX get theatre */
+h1{
+    padding-bottom: 40px;
+    padding-left: 10px;
+    color: #58629b;
+} 
+h2{
+    padding-top: 20px;
+    padding-left: 10px;
+    color: #cac7ff;
+    font-size: medium;
+}
+/* Nav */
+.nav-form-select{
+    margin-right: 5px;
+    border: 1px solid #ced4da;
+    border-radius: .375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(118, 118, 118);
+}
+/* header part*/
+h1{
+    padding-bottom: 40px;
+    padding-left: 10px;
+    color: #58629b;
+} 
+h2{
+    padding-top: 20px;
+    padding-left: 10px;
+    color: #58629b;
+    font-size: medium;
+}
+
+body{
+    margin-bottom: 50px;
+}
+.main{
+    margin: 0 auto;
+}
+
+.header{
+	display: flex;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.logo{
+	width: 70px;
+	height: 70px;
+}
+
+.head{
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+/* home page main part*/
+.category{
+    display: flex;
+}
+
+/*post form*/
+.form_part{
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+} 
+
+.form-select{
+   margin-top: 40px;
+}
+
+.button{
+    padding-top: 20px;
+}
+
+.form-label{
+    font-weight: bolder;
+}
+
+.image-post{
+    margin-top: 20px;
+}
+
+/* Movie page */
+.card{
+    margin:50px 20px;
+    display: inline-block;
+    width: 18rem;
+    height: 19rem;
+    vertical-align: top; 
+    position: relative;
+}
+
+.action{
+    position: absolute;
+    left:15px;
+    bottom: 1%;
+}
+
+.sort-part{
+    padding-left: 20px;
+    padding-top: 20px;
+    width: 200px;
+}
+
+/* Review part */
+.review-head{
+    display: flex;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.review-count{  
+    padding-left: 25px;
+}
+
+.subtitle{
+    font-weight: bolder;
+}
+
+.movieImage{
+    width: 150px;
+	height: 190px;
+}
+
+/* login page */
+.login-form{
+    padding-top: 50px;
+    margin:0 auto;
+    width: 500px;
+}
+
+/* AJAX get theatre */
+
+.container{
+    position: absolute;
+    left: 7%;
+    top: 5%;
+}
+
+.search-bar{
+    width: 1500px;
+    height: 70px;
+    max-width: 700px;
+    background:#F0F8FF;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.search-bar input{
+    background: transparent;
+    flex:1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+    color: #cac7ff;
+}
+
+::placeholder{
+    color:#cac7ff;
+}
+
+.search-bar button img{
+    width:25px;
+}
+
+.search-bar button{
+    border:0;
+    border-radius:50%;
+    width: 60px;
+    height: 60px;
+    background: #58629b;
+    cursor: pointer;
+}
+
+.tablecontainer{
+    position: absolute;
+    left:5%;
+}
+
+#error{
+    display: none;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: none;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

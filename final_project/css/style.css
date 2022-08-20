@@ -8,6 +8,18 @@
     color: rgb(118, 118, 118);
 }
 /* header part*/
+h1{
+    padding-bottom: 40px;
+    padding-left: 10px;
+    color: #58629b;
+} 
+h2{
+    padding-top: 20px;
+    padding-left: 10px;
+    color: #58629b;
+    font-size: medium;
+}
+
 body{
     margin-bottom: 50px;
 }
@@ -100,5 +112,21 @@ body{
     width: 150px;
 	height: 190px;
 }
+.review-card{
+    margin:50px 20px;
+    display: inline-block;
+    width: 23rem;
+    height: 27rem;
+    vertical-align: top; 
+    position: relative;
+}
+/* login page */
+.login-form{
+    padding-top: 50px;
+    margin:0 auto;
+    width: 500px;
+}
 
-/* Movie page */
+/* AJAX get theatre */
+
+
