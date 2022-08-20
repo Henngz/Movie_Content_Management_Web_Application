@@ -7,10 +7,10 @@
 	
 -------------------->
 <?php 
-  require('authenticate.php');
-	include('search.php');
+	require('search.php');
+  include ('/Applications/XAMPP/xamppfiles/htdocs/wd2/final_project/php-image-resize-2.0.3/lib/ImageResize.php');
+  include ('/Applications/XAMPP/xamppfiles/htdocs/wd2/final_project/php-image-resize-2.0.3/lib/ImageResizeException.php');
 
-  //Upload image
   function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
     $current_folder = dirname(__FILE__);
     
@@ -46,7 +46,7 @@
          move_uploaded_file($temporary_image_path, $new_image_path);
      }
  }
- echo $_FILES['image']['name'];
+
   //Chech if there is an image uploading
   if(!empty($_FILES['image']['name'])){
     if(!empty($_POST['movieName']) && !empty($_POST['description']) && !empty($_POST['categoryId']) && !empty($_POST['year'])){	
@@ -78,9 +78,6 @@
     
   }elseif(empty($_FILES['image']['name'])){
 
-        if(empty($_POST['movieName']) || empty($_OST['description']) || empty($_POST['categoryId']) || empty($_POST['year'])){
-          echo "<h1>"."Please input contents."."</h1>";
-      }	  	
     //  Sanitize user input to escape HTML entities and filter out dangerous characters.
       $movieName = filter_input(INPUT_POST, 'movieName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -110,7 +107,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
   <script src="ckeditor/ckeditor.js"></script>
     <title>Post Movie</title>
 </head>
@@ -157,10 +154,6 @@
                 <input type="submit" id="submitbutton">
             </div>
       </form>
-        <!-- <form method='post' enctype='multipart/form-data' class="image-upload">
-            
-            <input type='submit' name='submit' value='Upload Image'>
-      </form> -->
     </div>
 </div>
     

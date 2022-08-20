@@ -1,6 +1,7 @@
 <?php
     require('connect.php');
-
+    require('users.inc.php');
+    
     if(isset($_GET['search']) && empty($_GET['navCategoryId'])){
         $searchContent = trim($_GET['search']);
         $query = "SELECT * FROM Movie WHERE CONCAT(movieName) LIKE '%".$searchContent."%'";
@@ -25,8 +26,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Drama Movies</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light" style="background-color: #e3f2fd;">
@@ -44,10 +45,34 @@
           <a class="nav-link" href="movie.php">Movie</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="post.php">
-            Post
+          <a class="nav-link" href="theatre.php">Theatre</a>
+        </li>
+        <?php if (checkAdmin($db)): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="users.php">
+              Users
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="post.php">
+              Post
+            </a>
+          </li>
+        <?php endif; ?>
+
+        <?php if(isset($_SESSION["userName"])):?>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.inc.php">
+            Logout
           </a>
         </li>
+        <?php elseif(!isset($_SESSION["userName"])):?> 
+          <li class="nav-item">
+          <a class="nav-link" href="login.php">
+            Login
+          </a>
+        </li>
+        <?php endif; ?>
       </ul>
       <form class="d-flex" role="search" action="search.php" method="GET">
         <input class="form-control me-2" type="search" placeholder="Search Movie" aria-label="Search" name="search">
