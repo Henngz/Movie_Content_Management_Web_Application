@@ -5,7 +5,10 @@ This is a site created to display different movies. Douban is a movie lover webs
 ![image](https://user-images.githubusercontent.com/105320424/187093375-a64d1028-d66a-44ff-8bbb-b805e182befa.png)
 
 # Overview
+Homepage with different categories of movies:
+<img width="1508" alt="Screen Shot 2022-08-28 at 7 44 42 PM" src="https://user-images.githubusercontent.com/105320424/187102538-8b8dc029-aa53-4fd1-8370-e67f8d2f49fb.png">
 
+Login system:
+https://user-images.githubusercontent.com/105320424/187102682-2a9c1bd3-c0f4-43ed-806f-50a64de90e4c.mov
 
-https://user-images.githubusercontent.com/105320424/187102421-0687f7e0-a00b-4adb-ae3e-838fa00b92ee.mov
 
