@@ -9,6 +9,9 @@ Homepage with different categories of movies:
 <img width="1508" alt="Screen Shot 2022-08-28 at 7 44 42 PM" src="https://user-images.githubusercontent.com/105320424/187102538-8b8dc029-aa53-4fd1-8370-e67f8d2f49fb.png">
 
 Login system:
-https://user-images.githubusercontent.com/105320424/187102682-2a9c1bd3-c0f4-43ed-806f-50a64de90e4c.mov
 
+
+
+
+https://user-images.githubusercontent.com/105320424/187102725-2748a15e-a163-492f-8218-1042a613c340.mov
 
