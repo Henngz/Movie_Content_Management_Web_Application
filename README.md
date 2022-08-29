@@ -41,4 +41,8 @@ Update movie details:
 
 <img width="1351" alt="Screen Shot 2022-08-28 at 8 06 16 PM" src="https://user-images.githubusercontent.com/105320424/187103773-b3671add-530f-4f91-b5dc-b960e4aaa3ce.png">
 
+Using AJAX with a 3rd party API:
+
+
+https://user-images.githubusercontent.com/105320424/187104195-45bb3b0c-a384-42dd-8f6b-a33b4492276b.mov
 
