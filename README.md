@@ -11,7 +11,5 @@ Homepage with different categories of movies:
 Login system:
 
 
-
-
 https://user-images.githubusercontent.com/105320424/187102725-2748a15e-a163-492f-8218-1042a613c340.mov
 
