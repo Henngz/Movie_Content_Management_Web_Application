@@ -16,7 +16,7 @@
     <div class="homepage_main">
         <div class="header">
         <img class="logo" src="image/logo.png" alt="" />
-        <h1 class="head">Manage Users</a></h1>
+        <h1 class="head">Find Theatres</a></h1>
     </div>
         <form class="search-bar">
             <input type="text" id="searchBar" placeholder="search" name="searchBar">
