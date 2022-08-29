@@ -20,9 +20,11 @@ https://user-images.githubusercontent.com/105320424/187102942-cc5331ab-fa4c-4e8f
 
 
 Post movies:
+
 <img width="1653" alt="Screen Shot 2022-08-28 at 7 56 00 PM" src="https://user-images.githubusercontent.com/105320424/187103171-9ee73c4d-2022-4e73-aaab-498b82550de6.png">
 
 Manage users:
+
 <img width="1658" alt="Screen Shot 2022-08-28 at 7 56 39 PM" src="https://user-images.githubusercontent.com/105320424/187103222-c920ea46-85d4-469f-acce-aa28e2189f38.png">
 
 Search function(limiting the search results to a specific category):
@@ -38,4 +40,5 @@ https://user-images.githubusercontent.com/105320424/187103692-71d559ad-46cb-421e
 Update movie details:
 
 <img width="1351" alt="Screen Shot 2022-08-28 at 8 06 16 PM" src="https://user-images.githubusercontent.com/105320424/187103773-b3671add-530f-4f91-b5dc-b960e4aaa3ce.png">
+
 
