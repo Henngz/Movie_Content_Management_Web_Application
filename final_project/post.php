@@ -7,10 +7,8 @@
 	
 -------------------->
 <?php 
-	require('search.php');
-  include ('/Applications/XAMPP/xamppfiles/htdocs/wd2/final_project/php-image-resize-2.0.3/lib/ImageResize.php');
-  include ('/Applications/XAMPP/xamppfiles/htdocs/wd2/final_project/php-image-resize-2.0.3/lib/ImageResizeException.php');
-
+require('search.php');
+  
   function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
     $current_folder = dirname(__FILE__);
     
