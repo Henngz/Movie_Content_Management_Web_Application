@@ -74,7 +74,7 @@ require('search.php');
           $statement -> execute();           
       }
     
-  }elseif(empty($_FILES['image']['name'])){
+  }elseif(empty($_FILES['image']['name']) && !isset($_FILES['image']['name'])){
 
     //  Sanitize user input to escape HTML entities and filter out dangerous characters.
       $movieName = filter_input(INPUT_POST, 'movieName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
